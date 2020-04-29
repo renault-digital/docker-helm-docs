@@ -44,9 +44,9 @@ image="renaultdigital/helm-docs"
 repo="norwoodj/helm-docs"
 
 if [[ ${CI} == 'true' ]]; then
-  latest=`curl -sL -H "Authorization: token ${API_TOKEN}"  https://api.github.com/repos/${repo}/tags |jq -r ".[].name"|sort -Vr|head -20|sed 's/^v//'`
+  latest=`curl -sL -H "Authorization: token ${API_TOKEN}"  https://api.github.com/repos/${repo}/releases/latest |jq -r ".tag_name"| cut -c 2-`
 else
-  latest=`curl -sL https://api.github.com/repos/${repo}/tags |jq -r ".[].name"|sort -Vr|head -20|sed 's/^v//'`
+  latest=`curl -sL https://api.github.com/repos/${repo}/releases/latest |jq -r ".tag_name"| cut -c 2-`
 fi
 
 for tag in ${latest}
