@@ -26,30 +26,11 @@ https://hub.docker.com/r/renaultdigital/helm-docs/tags/
 
 # Usage
 
-    # mount local folders in container.
-    docker run -ti --rm -v $(pwd):/apps -w /apps \
-        -v ~/.kube:/root/.kube -v ~/.helm-docs:/root/.helm-docs -v ~/.config/helm-docs:/root/.config/helm-docs \
-        -v ~/.cache/helm-docs:/root/.cache/helm-docs \
-        renaultdigital/helm-docs
+    # mount current folders in container and generate README.md based on README.tmpl.md
+    docker run --rm -v $PWD:/build -w /build jnorwood/helm-docs
 
-    # Run helm-docs with special version. The tag is helm-docs's version
-    docker run -ti --rm -v $(pwd):/apps -w /apps \
-        -v ~/.kube:/root/.kube -v ~/.helm-docs:/root/.helm-docs -v ~/.config/helm-docs:/root/.config/helm-docs \
-        -v ~/.cache/helm-docs:/root/.cache/helm-docs \
-        renaultdigital/helm-docs:3.1.1
-
-    # run container as command
-    alias helm-docs="docker run -ti --rm -v $(pwd):/apps -w /apps \
-        -v ~/.kube:/root/.kube -v ~/.helm-docs:/root/.helm-docs -v ~/.config/helm-docs:/root/.config/helm-docs \
-        -v ~/.cache/helm-docs:/root/.cache/helm-docs \
-        renaultdigital/helm-docs"
-    helm-docs --help
-    
-    # example in ~/.bash_profile
-    alias helm-docs='docker run -e KUBECONFIG="/root/.kube/config:/root/.kube/some-other-context.yaml" -ti --rm -v $(pwd):/apps -w /apps \
-        -v ~/.kube:/root/.kube -v ~/.helm-docs:/root/.helm-docs -v ~/.config/helm-docs:/root/.config/helm-docs \
-        -v ~/.cache/helm-docs:/root/.cache/helm-docs \
-        renaultdigital/helm-docs'
+    # Mount current folder in container and check if the generated doc is different from the REAME.md
+    docker run --rm -v $PWD:/build -w /build jnorwood/helm-docs -d | diff README.md -
 
 # Why we need it
 
