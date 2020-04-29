@@ -1,6 +1,6 @@
 # kubernetes helm-docs
 
-[![Build Status](https://travis-ci.com/renaultdigital/helm-docs.svg?branch=master)](https://travis-ci.com/renaultdigital/helm-docs)
+[![Build Status](https://travis-ci.com/renault-digital/docker-helm-docs.svg?token=ncotYzyGStjuDrTy46xs&branch=master)](https://travis-ci.com/renault-digital/docker-helm-docs)
 
 Auto-trigger docker build for [kubernetes helm-docs](https://github.com/norwoodj/helm-docs) when new release is announced.
 
