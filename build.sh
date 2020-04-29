@@ -22,6 +22,11 @@ build() {
   fi
   version=$(echo ${version} | sed 's/[^0-9.]*//g')
 
+  if [ "${version}" == "0.1.0" ]; then
+    echo "0.1.0 ignored (no version)"
+    exit
+  fi
+
   if [ "${version}" == "${tag}" ]; then
     echo "matched"
   else
