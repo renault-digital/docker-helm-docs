@@ -27,10 +27,10 @@ https://hub.docker.com/r/renaultdigital/helm-docs/tags/
 # Usage
 
     # mount current folders in container and generate README.md based on README.tmpl.md
-    docker run --rm -v $PWD:/build -w /build jnorwood/helm-docs
+    docker run --rm -v $PWD:/build -w /build renaultdigital/helm-docs
 
     # Mount current folder in container and check if the generated doc is different from the REAME.md
-    docker run --rm -v $PWD:/build -w /build jnorwood/helm-docs -d | diff README.md -
+    docker run --rm -v $PWD:/build -w /build renaultdigital/helm-docs -d | diff README.md -
 
 # Why we need it
 
