@@ -6,9 +6,9 @@ FROM alpine:3
 ARG VERSION
 ARG NO_PREFIX_VERSION
 
-# ENV BASE_URL="https://storage.googleapis.com/kubernetes-helm"
+# https://github.com/norwoodj/helm-docs/releases/download/v0.13.0/helm-docs_0.13.0_Linux_i386.tar.gz
 ENV BASE_URL="https://github.com/norwoodj/helm-docs/releases/download"
-ENV TAR_FILE="v${VERSION}/helm-docs_${NO_PREFIX_VERSION}_Linux_x86_64.tar.gz"
+ENV TAR_FILE="${VERSION}/helm-docs_${NO_PREFIX_VERSION}_Linux_x86_64.tar.gz"
 
 RUN apk add --update --no-cache curl ca-certificates && \
     curl -L ${BASE_URL}/${TAR_FILE} | tar xvz && \
